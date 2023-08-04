@@ -1,0 +1,7 @@
+{
+  "name": "Tercer_Parcial_IPDM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
