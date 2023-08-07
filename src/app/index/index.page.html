@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="medium">Clinica Veterinaria KUARAHY</ion-title>
+    <ion-title class="ion-text-center" size="small">Control de Vacunas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <label for="cliente">Cliente:</label>
+      <ion-select (ionChange)="handleChange($event)" (ionChange)="buscarMasc()">
+          <ion-select-option *ngFor="let cliente of clientes" value="{{cliente.ClienteID}}">{{cliente.NombreApelllido}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <label for="Mascota">Mascota: </label>
+      <ion-select aria-label="Mascota" (ionChange)="handleChangeVac($event)" (ionChange)= "limpiarVac()">
+        <ion-select-option *ngFor="let mascota of mascotas" value ="{{mascota.MascotaID}}">{{mascota.Nombre}}</ion-select-option>
+      </ion-select>
+      <ion-button expand="block" shape="round" size ="default" (click)="buscarVac()">
+        Ver Historial
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>Fecha Vacunacion</ion-col>
+      <ion-col>Vacuna</ion-col>
+      <ion-col>Costo</ion-col>
+    </ion-row>
+    <div *ngIf="vacunas.length>0">
+        <ion-row *ngFor="let vacuna of vacunas">
+        <ion-col>{{vacuna.FechaVacunacion}}</ion-col>
+        <ion-col>{{vacuna.vacuna}}</ion-col>
+        <ion-col>{{vacuna.costo}}</ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
